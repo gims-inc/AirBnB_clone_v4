@@ -1,6 +1,12 @@
-$(document).ready(init);
-const HOST = '0.0.0.0';
-const amenityObj = {};
+$(document).ready(function (){
+  const HOST = '0.0.0.0';
+  const amenityObj = {};
+  
+  init();
+  apiStatus();
+  $('#places_search').click(searchPlacesAmenities);
+
+
 function init () {
   $('.amenities .popover input').change(function () {
     if ($(this).is(':checked')) {
@@ -11,9 +17,6 @@ function init () {
     const names = Object.keys(amenityObj);
     $('.amenities h4').text(names.sort().join(', '));
   });
-
-  apiStatus();
-  searchPlacesAmenities();
 }
 
 function apiStatus () {
@@ -59,3 +62,5 @@ function searchPlacesAmenities () {
     }
   });
 }
+
+});
